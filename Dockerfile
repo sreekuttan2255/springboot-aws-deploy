@@ -1,6 +1,6 @@
-FROM eclipse-temurin:17-jdk-alpine
-RUN apk add curl
-VOLUME /tmp
+FROM openjdk:17-jdk-alpine
+#RUN apk add curl
+WORKDIR /app
+ADD ./springboot-aws-deploy-service.jar /app/springboot-aws-deploy-service.jar
 EXPOSE 8080
-ADD target/springboot-aws-deploy-service.jar springboot-aws-deploy-service.jar
-ENTRYPOINT ["java","-jar","/springboot-aws-deploy-service.jar"]
+ENTRYPOINT ["java","-jar","/app/springboot-aws-deploy-service.jar"]
